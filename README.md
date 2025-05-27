@@ -20,7 +20,7 @@ A aplicação será desenvolvida utilizando a seguinte stack:
 - **HTML5** – Estruturação das páginas web.
 - **CSS3** – Estilização das páginas.
 - **JavaScript** – Comportamentos e interações dinâmicas.
-- **Bootstrap** (opcional) – Framework CSS para facilitar a criação de um design responsivo e moderno.
+- **Bootstrap**  – Framework CSS para facilitar a criação de um design responsivo e moderno.
 
 ---
 
