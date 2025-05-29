@@ -13,3 +13,13 @@
 		</form>
 	</body>
 </html>
+<?php
+include_once __DIR__.'/includes/classes/genero.php';
+if(isset($_POST['genero'])){
+	$nome = filter_input(INPUT_POST,'genero',FILTER_SANITIZE_SPECIAL_CHARS);
+	$gender = new genero();
+	$gender->setGenero($nome);
+	//print htmlspecialchars($gender->cadastro());
+	print $gender->cadastro();
+}
+?>
