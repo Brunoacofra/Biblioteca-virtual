@@ -38,11 +38,11 @@ A aplicação irá conter um sistema completo de **CRUD**:
 ## 🧾 Estrutura Inicial
 
 biblioteca/
-├── index.php          # Página inicial com listagem de livros
-├── create.php         # Formulário de cadastro de novo livro
-├── store.php          # Lógica para salvar livro no banco
-├── edit.php           # Formulário de edição de livro
-├── update.php         # Lógica para atualizar livro
-├── delete.php         # Lógica para excluir livro
-├── db.php             # Conexão com o banco de dados (PDO)
-└── README.md          # Documentação do projeto
+├── index.php          # Página inicial com listagem de livros.
+├── create.php         # Formulário de cadastro de novo livro.
+├── store.php          # Lógica para salvar livro no banco.
+├── edit.php           # Formulário de edição de livro.
+├── update.php         # Lógica para atualizar livro.
+├── delete.php         # Lógica para excluir livro.
+├── db.php             # Conexão com o banco de dados (PDO).
+└── README.md          # Documentação do projeto.
