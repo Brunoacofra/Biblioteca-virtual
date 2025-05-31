@@ -14,7 +14,7 @@ class Database {
             echo "Erro de conexão: " . $e->getMessage();
         }
     }
-    public function prepare($query) {
+    protected function prepare($query) {
         $stmt = $this->conn->prepare($query);
         return $stmt;
     }
@@ -22,17 +22,17 @@ class Database {
         return $this->conn;
     }
 
-    public function closeConnection() {
+    protected function closeConnection() {
         $this->conn = null;
     }
-    public function getOne($query){
+    protected function getOne($query){
       $a = $this->conn->prepare($query);
       $a->execute();
 
       $resultado = $a->fetch(PDO::FETCH_ASSOC);
       return $resultado;
     }
-    public function getAll($query){
+    protected function getAll($query){
       $a = $this->conn->prepare($query);
       $a->execute();
 
