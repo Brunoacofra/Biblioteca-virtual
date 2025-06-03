@@ -15,7 +15,6 @@
 </html>
 <?php
 include_once './includes/classes/autor.php';
-//ob_start();
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	$name = filter_input(INPUT_POST,'name',FILTER_SANITIZE_SPECIAL_CHARS);
 	$autor = new autor();
@@ -24,4 +23,3 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	header("Location: cadastroAutor.php");
 	exit;
 }
-//ob_end_flush();

@@ -25,4 +25,11 @@ class autor extends Database{
 		}
 		return 'ERRO';
 	}
+	public function listarTodos(){
+		$query = "SELECT * FROM autor ORDER BY aut_nome ASC";
+		$resultado = $this->con->prepare($query);
+		$resultado->execute();
+		$result = $resultado->fetchAll(PDO::FETCH_ASSOC);
+		return $result;
+	}
 }
