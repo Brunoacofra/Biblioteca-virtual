@@ -18,7 +18,13 @@ nav{
     width: 100%;
     background-color: violet;
     position: fixed;
+    display:block;
+    z-index: 999;
 }
 nav ul li{
     padding-left: 1%;
+}
+#body{
+    padding-top:15% ;
+    text-align: center;
 }

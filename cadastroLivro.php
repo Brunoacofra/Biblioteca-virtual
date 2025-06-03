@@ -25,25 +25,27 @@
                 <li><a href="./cadastroLivro.php">Livro</a></li>
             </ul>
         </nav>
-		<form method="post">
-			<label>Nome livro:</label>
-			<input type="text" required>
-			<br>
-			<label>Autor:</label>
-			<select>
-				<option value="default">Selecione...</option>
-				<?php
-					for($i = 0;$i <= count($autores)-1;$i++){
-						print '<option value="'.$autores[$i]['aut_codigo'].'">'.$autores[$i]['aut_nome'].'</option>';
-					}
-				?>
-			</select>
-			<br>
-			<label>Genero:</label><button id="adc" type="button">+</button><button id="remove" type="button">-</button>
-			<br>
-			<div id="Gender"></div>
-			<button type="submit" id="btn" disabled>Cadastrar</button>
-		</form>
+		<div id="body">
+			<form method="post">
+				<label>Nome livro:</label>
+				<input type="text" required>
+				<br>
+				<label>Autor:</label>
+				<select>
+					<option value="default">Selecione...</option>
+					<?php
+						for($i = 0;$i <= count($autores)-1;$i++){
+							print '<option value="'.$autores[$i]['aut_codigo'].'">'.$autores[$i]['aut_nome'].'</option>';
+						}
+					?>
+				</select>
+				<br>
+				<label>Genero:</label><button id="adc" type="button">+</button><button id="remove" type="button">-</button>
+				<br>
+				<div id="Gender"></div>
+				<button type="submit" id="btn" disabled>Cadastrar</button>
+			</form>
+		</div>
 		<script>
 			document.addEventListener("DOMContentLoaded",function(){
 				let btn = document.getElementById('btn');

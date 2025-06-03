@@ -15,11 +15,13 @@
                 <li><a href="./cadastroLivro.php">Livro</a></li>
             </ul>
         </nav>
-		<form method="post">
-			<label>Genero:</label>
-			<input type="text" name="genero">
-			<button type="submit">Enviar</button>
-		</form>
+		<div id="body">
+			<form method="post">
+				<label>Genero:</label>
+				<input type="text" name="genero">
+				<button type="submit">Enviar</button>
+			</form>
+		</div>
 	</body>
 </html>
 <?php

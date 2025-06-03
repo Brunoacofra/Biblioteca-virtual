@@ -33,30 +33,30 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                 <li><a href="./cadastroLivro.php">Livro</a></li>
             </ul>
         </nav>
-		<form method="POST">
-			<label>Nome do autor : </label>
-			<input type="text" name="name" required>
-			<button type="submit" id="btn">Enviar</button>
-		</form>
-		<div>
+		<div id="body">
+			<form method="POST">
+				<label>Nome do autor : </label>
+				<input type="text" name="name" required>
+				<button type="submit" id="btn">Enviar</button>
+			</form>
 			<table>
-				<thead>
-					<tr>
-						<th> Nome </th>
-						<th> Editar </th>
-						<th> Excluir </th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php
-					for($i = 0;$i <= count($autores)-1;$i++){
-						print'<tr>
-						<td>'.$autores[$i]['aut_nome'].'</td><td><a href="#s">Edit</a></td><td><a href="#">Excluir</a></td>
-						</tr>';
-					}
-					?>
-				</tbody>
-			</table>
+					<thead>
+						<tr>
+							<th> Nome </th>
+							<th> Editar </th>
+							<th> Excluir </th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+						for($i = 0;$i <= count($autores)-1;$i++){
+							print'<tr>
+							<td>'.$autores[$i]['aut_nome'].'</td><td><a href="#s">Edit</a></td><td><a href="#">Excluir</a></td>
+							</tr>';
+						}
+						?>
+					</tbody>
+				</table>
 		</div>
 	</body>
 </html>
