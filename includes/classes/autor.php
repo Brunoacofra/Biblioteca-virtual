@@ -21,15 +21,27 @@ class autor extends Database{
 		$resultado->closeCursor();
 		$this->con->closeConnection();
 		if($retorno){
-			return 'Gravado com sucesso';
+			print 'Gravado com sucesso';
+		}else{
+			print 'ERRO';
 		}
-		return 'ERRO';
 	}
 	public function listarTodos(){
 		$query = "SELECT * FROM autor ORDER BY aut_nome ASC";
+		$resultado = $this->con->getAll($query);
+		return $resultado;
+	}
+	public function excluir($codigo){
+		$query ="DELETE FROM autor where aut_codigo = :cod";
 		$resultado = $this->con->prepare($query);
-		$resultado->execute();
-		$result = $resultado->fetchAll(PDO::FETCH_ASSOC);
-		return $result;
+		$resultado->bindParam(':cod',$codigo,PDO::PARAM_INT);
+		$r = $resultado->execute();
+		$resultado->closeCursor();
+		$this->con->closeConnection();
+		if($r){
+			print 'Excluido com sucesso';
+		}else{
+			print 'Error';
+		}
 	}
 }

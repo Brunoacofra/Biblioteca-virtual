@@ -25,4 +25,10 @@ class genero extends Database{
 		}
 		return 'Erro';
 	}
+	public function listarTodos(){
+		$query = "SELECT * FROM genero ORDER BY gen_nome ASC";
+		$resu = $this->con->getAll($query);
+		$this->con->closeConnection();
+		return $resu;
+	}
 }

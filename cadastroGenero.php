@@ -1,3 +1,16 @@
+<?php
+include_once __DIR__.'/includes/classes/genero.php';
+$gender = new genero();
+$generos = $gender->listarTodos();
+//var_dump($generos);
+if(isset($_POST['genero'])){
+	$nome = filter_input(INPUT_POST,'genero',FILTER_SANITIZE_SPECIAL_CHARS);
+	
+	$gender->setGenero($nome);
+	//print htmlspecialchars($gender->cadastro());
+	print $gender->cadastro();
+}
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -22,15 +35,27 @@
 				<button type="submit">Enviar</button>
 			</form>
 		</div>
+		<div>
+			<table>
+				<thead>
+					<th>Nome</th>
+					<th>Editar</th>
+					<th>Excluir</th>
+				</thead>
+				<tbody>
+					<?php
+						for($i = 0;$i <=count($generos)-1;$i++){
+							print '
+							<tr>
+								<td>'.$generos[$i]['gen_nome'].'</td>
+								<td><a href="#">---</a></td>
+								<td><a href="#">XXX</a></td>
+							</tr>
+							';
+						}
+					?>
+				</tbody>
+			</table>
+		</div>
 	</body>
 </html>
-<?php
-include_once __DIR__.'/includes/classes/genero.php';
-if(isset($_POST['genero'])){
-	$nome = filter_input(INPUT_POST,'genero',FILTER_SANITIZE_SPECIAL_CHARS);
-	$gender = new genero();
-	$gender->setGenero($nome);
-	//print htmlspecialchars($gender->cadastro());
-	print $gender->cadastro();
-}
-?>

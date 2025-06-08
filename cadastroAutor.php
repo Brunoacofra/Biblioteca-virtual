@@ -2,13 +2,6 @@
 include_once './includes/classes/autor.php';
 $autor = new autor();
 $autores = $autor->listarTodos();
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-	$name = filter_input(INPUT_POST,'name',FILTER_SANITIZE_SPECIAL_CHARS);
-	$autor->setNome($name);
-	$autor->cadastro();
-	header("Location: cadastroAutor.php");
-	exit;
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,12 +11,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		<link rel="stylesheet" href="./includes/estilos/style.css">
 		 <title> █ Biblioteca Virtual █ </title>
 	</head>
-	<style>
-		table, th, td {
-  			border: 1px solid black;
-  			border-collapse: collapse;
-		}
-	</style>
 	<body>
 		<nav>
             <ul>
@@ -34,12 +21,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             </ul>
         </nav>
 		<div id="body">
-			<form method="POST">
+			<form method="POST" id="formulario">
 				<label>Nome do autor : </label>
-				<input type="text" name="name" required>
-				<button type="submit" id="btn">Enviar</button>
+				<input type="text" name="name" id="nome" required>
+				<button type="submit" id="btn" disabled>Enviar</button>
+				<button type="button" id="btnedit">Editar</button>
+				<button type="button" id="cancel">Cancelar</button>
 			</form>
-			<table>
+			<table id="tabela">
 					<thead>
 						<tr>
 							<th> Nome </th>
@@ -51,12 +40,48 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 						<?php
 						for($i = 0;$i <= count($autores)-1;$i++){
 							print'<tr>
-							<td>'.$autores[$i]['aut_nome'].'</td><td><a href="#s">Edit</a></td><td><a href="#">Excluir</a></td>
+							<td>'.$autores[$i]['aut_nome'].'</td><td><a href="#s" data-id="'.$autores[$i]['aut_codigo'].'" data-nome="'.$autores[$i]['aut_nome'].'" class="editarAutor">Edit</a></td><td><a href="#" class="excluir" data-id="'.$autores[$i]['aut_codigo'].'" data-nome="'.$autores[$i]['aut_nome'].'">Excluir</a></td>
 							</tr>';
 						}
 						?>
 					</tbody>
 				</table>
 		</div>
+		<script>
+			document.addEventListener("DOMContentLoaded",function(){
+				document.getElementById('btn').addEventListener("click",function(event){
+					event.preventDefault();
+					cadastroAutor();
+				});
+				document.getElementById('nome').addEventListener("input",anulabtnCad);
+				document.querySelectorAll('.editarAutor').forEach(btn=>{
+					btn.addEventListener('click',function(e){
+						e.preventDefault();
+						document.getElementById('tabela').style.display = 'none';
+						document.getElementById('btn').style.display = 'none';
+						document.getElementById('btnedit').style.display = 'inline';
+						document.getElementById('cancel').style.display = 'inline';
+						document.getElementById('nome').value = this.dataset.nome;
+					});
+				});
+				document.querySelectorAll('.excluir').forEach(btn =>{
+					btn.addEventListener('click',function(e){
+						e.preventDefault();
+						if(confirm('Deseja realmente excluir o registro "'+this.dataset.nome+'"')){
+							excluirAutor(this.dataset.id);
+						}
+					})
+				});
+				document.getElementById('cancel').addEventListener('click',()=>{
+					document.getElementById('btn').style.display = 'inline';
+					document.getElementById('btnedit').style.display = 'none';
+					document.getElementById('cancel').style.display = 'none';
+					document.getElementById('tabela').style.display = 'inline';
+					document.getElementById('formulario').reset();
+        			anulabtnCad();
+				});
+			});
+		</script>
+		<script src="./includes/functions/funcoes.js"></script>
 	</body>
 </html>
