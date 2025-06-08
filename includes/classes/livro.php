@@ -84,4 +84,17 @@ class livro extends Database{
         $smt = $this->con->getAll($query);
         return $smt;
     }
+    public function excluir($codigo){
+		$query ="DELETE FROM livro where liv_codigo = :cod";
+		$resultado = $this->con->prepare($query);
+		$resultado->bindParam(':cod',$codigo,PDO::PARAM_INT);
+		$r = $resultado->execute();
+		$resultado->closeCursor();
+		$this->con->closeConnection();
+		if($r){
+			print 'Excluido com sucesso';
+		}else{
+			print 'Error';
+		}
+	}
 }

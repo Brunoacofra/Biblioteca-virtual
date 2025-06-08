@@ -30,4 +30,31 @@ class genero extends Database{
 		$resu = $this->con->getAll($query);
 		return $resu;
 	}
+	public function excluir($codigo){
+		$query ="DELETE FROM genero where gen_codigo = :cod";
+		$resultado = $this->con->prepare($query);
+		$resultado->bindParam(':cod',$codigo,PDO::PARAM_INT);
+		$r = $resultado->execute();
+		$resultado->closeCursor();
+		$this->con->closeConnection();
+		if($r){
+			print 'Excluido com sucesso';
+		}else{
+			print 'Error';
+		}
+	}
+	public function editar($cod){
+		$query = 'UPDATE genero SET gen_nome = :nome WHERE gen_codigo = :cod';
+		$faz = $this->con->prepare($query);
+		$faz->bindParam(':nome',$this->genero,PDO::PARAM_STR);
+		$faz->bindParam(':cod',$cod,PDO::PARAM_INT);
+		$resultado = $faz->execute();
+		$faz->closeCursor();
+		$this->con->closeConnection();
+		if($resultado){
+			print 'Editado com sucesso';
+		}else{
+			print 'ERROR';
+		}
+	}
 }

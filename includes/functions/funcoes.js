@@ -98,3 +98,45 @@ function excluirAutor(id){
         alert(error);
     })
 }
+function excluirLivro(id){
+    fetch('./includes/endPoints/excluirLivro.php?cod='+id)
+    .then(response =>response.text())
+    .then(data =>{
+        alert(data);
+        setTimeout(function(){
+            location.reload();
+        },500)
+    })
+    .catch(error =>{
+        alert(error);
+    })
+}
+function excluirGenero(id){
+    fetch('./includes/endPoints/excluirGenero.php?cod='+id)
+    .then(response =>response.text())
+    .then(data =>{
+        alert(data);
+        setTimeout(function(){
+            location.reload();
+        },500)
+    })
+    .catch(error =>{
+        alert(error);
+    })
+}
+function editarGenero(){
+
+}
+function editarGenero(cod,nome){
+    alert(cod+'<-codigo |nome->'+nome);
+    fetch('./includes/endPoints/editarGenero.php?cod='+cod+'&nome='+nome)
+    .then(response =>response.text())
+    .then(data =>{
+        alert(data);
+        location.reload();
+    })
+    .catch(error =>{
+        alert(error);
+    })
+    window.cod = 0;
+}
