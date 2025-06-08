@@ -72,8 +72,18 @@ function cadastroAutor(){
         anulabtnCad();
     } 
 }
-function editarAutor(cod){
-    alert('vamos editar');
+function editarAutor(cod,nome){
+    alert(cod+'<-codigo |nome->'+nome);
+    fetch('./includes/endPoints/editarAutor.php?cod='+cod+'&nome='+nome)
+    .then(response =>response.text())
+    .then(data =>{
+        alert(data);
+        location.reload();
+    })
+    .catch(error =>{
+        alert(error);
+    })
+    window.cod = 0;
 }
 function excluirAutor(id){
     fetch('./includes/endPoints/excluirAutor.php?cod='+id)

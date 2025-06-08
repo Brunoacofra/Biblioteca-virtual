@@ -14,7 +14,7 @@ class genero extends Database{
 	}
 
 	public function cadastro(){
-		$query = "INSERT INTO genero (gen_nome) VALUES (:n)";
+		$query = "INSERT INTO genero(gen_nome) VALUES (:n)";
 		$smt = $this->con->prepare($query);
 		$smt->bindParam(':n',$this->genero,PDO::PARAM_STR);
 		$resultado = $smt->execute();
@@ -28,7 +28,6 @@ class genero extends Database{
 	public function listarTodos(){
 		$query = "SELECT * FROM genero ORDER BY gen_nome ASC";
 		$resu = $this->con->getAll($query);
-		$this->con->closeConnection();
 		return $resu;
 	}
 }

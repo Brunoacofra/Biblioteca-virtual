@@ -1,11 +1,20 @@
 <?php
 	include_once './includes/classes/genero.php';
+	include_once './includes/classes/livro.php';
 	include_once './includes/classes/autor.php';
 	$aut = new autor();
 	$autores = $aut->listarTodos();
-	//var_dump($autores);
 	if($_SERVER['REQUEST_METHOD'] ==="POST"){
 		$liv = new livro();
+		$conta = count($_POST)-2;
+		$gender = [];
+		$liv->setName(filter_input(INPUT_POST,'nomeliv'));
+		$liv->setAutor(filter_input(INPUT_POST,'autor',FILTER_VALIDATE_INT));
+		for($x=0;$x<$conta;$x++){
+			$gender[$x]= filter_input(INPUT_POST,'select_'.$x+1,FILTER_VALIDATE_INT);
+		}
+		$liv->setGenero($gender);
+		$liv->cadastrar();
 	}
 	?>
 <!DOCTYPE html>
@@ -26,12 +35,12 @@
             </ul>
         </nav>
 		<div id="body">
-			<form method="post">
+			<form method="POST">
 				<label>Nome livro:</label>
-				<input type="text" required>
+				<input type="text" name="nomeliv" required>
 				<br>
 				<label>Autor:</label>
-				<select>
+				<select name="autor">
 					<option value="default">Selecione...</option>
 					<?php
 						for($i = 0;$i <= count($autores)-1;$i++){

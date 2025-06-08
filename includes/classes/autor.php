@@ -44,4 +44,18 @@ class autor extends Database{
 			print 'Error';
 		}
 	}
+	public function editarAutor($cod){
+		$query = 'UPDATE autor SET aut_nome = :nome WHERE aut_codigo = :cod';
+		$faz = $this->con->prepare($query);
+		$faz->bindParam(':nome',$this->name,PDO::PARAM_STR);
+		$faz->bindParam(':cod',$cod,PDO::PARAM_INT);
+		$resultado = $faz->execute();
+		$faz->closeCursor();
+		$this->con->closeConnection();
+		if($resultado){
+			print 'Editado com sucesso';
+		}else{
+			print 'ERROR';
+		}
+	}
 }

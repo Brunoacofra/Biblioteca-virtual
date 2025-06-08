@@ -53,6 +53,10 @@ $autores = $autor->listarTodos();
 					event.preventDefault();
 					cadastroAutor();
 				});
+				document.getElementById('btnedit').addEventListener('click',()=>{
+					let nome = document.getElementById('nome').value;
+					editarAutor(cod,nome);
+				})
 				document.getElementById('nome').addEventListener("input",anulabtnCad);
 				document.querySelectorAll('.editarAutor').forEach(btn=>{
 					btn.addEventListener('click',function(e){
@@ -62,6 +66,7 @@ $autores = $autor->listarTodos();
 						document.getElementById('btnedit').style.display = 'inline';
 						document.getElementById('cancel').style.display = 'inline';
 						document.getElementById('nome').value = this.dataset.nome;
+						window.cod = this.dataset.id;
 					});
 				});
 				document.querySelectorAll('.excluir').forEach(btn =>{
