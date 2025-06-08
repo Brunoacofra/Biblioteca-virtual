@@ -1,48 +1,82 @@
-# 📚 Biblioteca Virtual
+📚 Biblioteca Virtual
+Sistema web para cadastro e gerenciamento de livros, autores e gêneros literários, desenvolvido como exercício de aplicação de conceitos de orientação a objetos em PHP puro.
 
-## ✅ Objetivo do Projeto
+🧪 Ambiente de Desenvolvimento
+Sistema operacional: Windows
 
-O objetivo desta aplicação é criar uma **Biblioteca Virtual**, onde será possível cadastrar, 
-visualizar, editar e excluir livros. Este sistema é um projeto prático da disciplina **Tecnologias Emergentes**, 
-que visa aplicar os conhecimentos em desenvolvimento web utilizando tecnologias modernas e persistência de dados.
+Servidor local: XAMPP
 
-A aplicação permitirá o gerenciamento de um acervo de livros de forma simples e intuitiva, servindo como base para sistemas maiores no futuro.
+PHP: Versão 8.2
 
----
+MySQL/MariaDB: Versão compatível com XAMPP
 
-## 🛠 Tecnologias Utilizadas
+Editor: VS Code
 
-A aplicação será desenvolvida utilizando a seguinte stack:
+🛠️ Tecnologias Utilizadas
+Linguagem: PHP puro (com orientação a objetos)
 
-- **PHP** – Linguagem de programação para o desenvolvimento do backend.
-- **MySQL** – Banco de dados relacional para persistência dos dados.
-- **PDO (PHP Data Objects)** – Biblioteca para acesso seguro ao banco de dados, evitando SQL Injection.
-- **HTML5** – Estruturação das páginas web.
-- **CSS3** – Estilização das páginas.
-- **JavaScript** – Comportamentos e interações dinâmicas.
-- **Bootstrap**  – Framework CSS para facilitar a criação de um design responsivo e moderno.
+Banco de dados: MySQL
 
----
+Estilo e layout: HTML5 + CSS3 (com Bootstrap 5)
 
-## 🧩 Funcionalidades
+JavaScript: Vanilla JS para interações (cadastro, edição, exclusão via eventos e manipulação de DOM)
 
-A aplicação irá conter um sistema completo de **CRUD**:
+🚀 Instalação e Execução
+Instale o XAMPP e inicie os serviços Apache e MySQL.
 
-- **Create** – Cadastro de novos livros.
-- **Read** – Listagem dos livros cadastrados.
-- **Update** – Edição dos dados de um livro.
-- **Delete** – Remoção de livros do sistema.
+Copie a pasta do projeto para o diretório htdocs do XAMPP:
 
----
+swift
+Copiar
+Editar
+C:/xampp/htdocs/Biblioteca-virtual/
+Crie um banco de dados chamado biblioteca no phpMyAdmin.
 
-## 🧾 Estrutura Inicial
+Importe o script SQL biblioteca_com_cascade.sql (ou equivalente) para criar as tabelas.
 
-biblioteca/
-- ├── index.php                  # Página inicial com listagem de livros.
-- ├── create.php                 # Formulário de cadastro de novo livro.
-- ├── store.php                  # Lógica para salvar livro no banco.
-- ├── edit.php                   # Formulário de edição de livro.
-- ├── update.php                 # Lógica para atualizar livro.
-- ├── delete.php                 # Lógica para excluir livro.
-- ├── db.php                     # Conexão com o banco de dados (PDO).
-- └── README.md                  # Documentação do projeto.
+Acesse a aplicação via navegador:
+
+bash
+Copiar
+Editar
+http://localhost/Biblioteca-virtual/index.php
+💻 Requisitos de Sistema
+PHP 8+ com suporte a PDO
+
+MySQL/MariaDB
+
+Navegador moderno (Chrome, Firefox, Edge)
+
+XAMPP ou outro ambiente de desenvolvimento com Apache + MySQL
+
+🤝 Como Contribuir
+Fork este repositório
+
+Crie uma nova branch:
+
+bash
+Copiar
+Editar
+git checkout -b minha-feature
+Faça suas alterações
+
+Submeta um Pull Request
+
+✨ Código Limpo
+O projeto segue boas práticas como:
+
+Separação de responsabilidades (cada classe com uma função clara)
+
+Nome de métodos e variáveis descritivos
+
+Reuso de código com métodos auxiliares
+
+Sanitização de entradas (filter_input, htmlspecialchars, etc.)
+
+🧪 Testes Automatizados
+⚠️ Ainda não foram implementados testes automatizados neste projeto, mas a estrutura orientada a objetos permite fácil aplicação de testes futuros (ex: PHPUnit).
+
+🧠 Padrões de Projeto
+Utilização básica de DAO (Data Access Object) nas classes autor, livro, genero para abstração da camada de persistência.
+
+Organização em arquivos de classe separados com require e include_once.
