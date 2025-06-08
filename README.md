@@ -80,3 +80,23 @@ Sanitização de entradas (filter_input, htmlspecialchars, etc.)
 Utilização básica de DAO (Data Access Object) nas classes autor, livro, genero para abstração da camada de persistência.
 
 Organização em arquivos de classe separados com require e include_once.
+
+Biblioteca-virtual/
+├── cadastroAutor.php
+├── cadastroGenero.php
+├── cadastroLivro.php
+├── editarLivro.php
+├── index.php
+├── includes/
+│   ├── classes/
+│   │   ├── autor.php
+│   │   ├── genero.php
+│   │   ├── livro.php
+│   │   └── Conexao.php
+│   ├── estilos/
+│   │   └── style.css
+│   └── functions/
+│       └── funcoes.js
+├── sql/
+│   └── biblioteca_com_cascade.sql
+└── README.md
