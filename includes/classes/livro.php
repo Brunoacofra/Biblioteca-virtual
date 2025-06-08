@@ -97,4 +97,21 @@ class livro extends Database{
 			print 'Error';
 		}
 	}
+    public function buscarPorId($id) {
+        $query = "SELECT * FROM livro WHERE liv_codigo = :id";
+        $stmt = $this->con->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function buscarGeneros($livroId) {
+        $query = "SELECT g.gen_codigo, g.gen_nome FROM genero_livro gl 
+                JOIN genero g ON gl.gen_codigo = g.gen_codigo 
+                WHERE gl.liv_codigo = :livroId";
+        $stmt = $this->con->prepare($query);
+        $stmt->bindParam(':livroId', $livroId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
